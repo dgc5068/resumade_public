@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,7 +16,7 @@ type FormData = z.infer<typeof resumeSchema>;
 export default function CreateResumePage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const form = useForm<FormData>({
     resolver: zodResolver(resumeSchema),
     defaultValues: {
@@ -44,13 +44,13 @@ export default function CreateResumePage() {
       setIsSubmitting(true);
       await createResume({
         ...data,
-        user_id: 'TODO', // This should come from your auth context
+        user_id: "TODO", // This should come from your auth context
       });
 
       router.push("/dashboard");
     } catch (error) {
       console.error("Failed to create resume:", error);
-      // TODO: Add error handling
+      // TODO: Add error handling.
     } finally {
       setIsSubmitting(false);
     }
@@ -159,7 +159,7 @@ export default function CreateResumePage() {
             </TabsContent>
 
             <TabsContent value="experience">
-              <DynamicList<'experience'>
+              <DynamicList<"experience">
                 name="experience"
                 form={form}
                 label="Experience"
@@ -175,7 +175,7 @@ export default function CreateResumePage() {
             </TabsContent>
 
             <TabsContent value="education">
-              <DynamicList<'education'>
+              <DynamicList<"education">
                 name="education"
                 form={form}
                 label="Education"
@@ -191,14 +191,11 @@ export default function CreateResumePage() {
             </TabsContent>
 
             <TabsContent value="skills">
-              <SkillsList
-                form={form}
-                label="Skills"
-              />
+              <SkillsList form={form} label="Skills" />
             </TabsContent>
 
             <TabsContent value="languages">
-              <DynamicList<'languages'>
+              <DynamicList<"languages">
                 name="languages"
                 form={form}
                 label="Languages"
@@ -210,7 +207,7 @@ export default function CreateResumePage() {
             </TabsContent>
 
             <TabsContent value="references">
-              <DynamicList<'references'>
+              <DynamicList<"references">
                 name="references"
                 form={form}
                 label="References"
